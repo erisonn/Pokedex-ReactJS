@@ -1,0 +1,24 @@
+.list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px;
+  border: 1px solid green;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 200px;
+  height: 250px;
+  text-align: center;
+}
+
+.list-item h1 {
+  font-size: 15px;
+}
+/*# sourceMappingURL=ListItem.css.map */
