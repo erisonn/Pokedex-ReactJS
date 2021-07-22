@@ -6,10 +6,14 @@ const ListItem = ({itemURL}) => {
 
     const { itemData, isLoading } = useApiRequest(itemURL)
 
+    useEffect(() => {
+        console.log("Render", itemData.name)
+    })
+
     return (
         <div className="list-item">
+            {isLoading && <span>...</span>}
             <div className="item-image">
-                {isLoading && <span>...</span>}
                 <img src={itemData.img} alt=""/>
             </div>
             <div className="item-name">

@@ -11,7 +11,7 @@ const useApiRequest = url => {
         .then(response => response.json())
         .then(data => {
             return {
-                'name': data.name,
+                'name': data.name.toUpperCase(),
                 'img' : data.sprites.front_default
             }
         })
