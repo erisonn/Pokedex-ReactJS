@@ -1,0 +1,19 @@
+header {
+    height: 100px;
+    background-color: rgb(48, 48, 48);
+    .header-container {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: inherit;
+        max-width: 1750px;
+        a {
+            text-decoration: none;
+            color: whitesmoke;
+            font-weight: bold;
+            font-size: 40px;
+            text-shadow: 2px 2px green;
+        }
+    }
+}

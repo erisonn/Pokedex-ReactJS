@@ -2,27 +2,43 @@ import { useState, useEffect } from "react"
 
 const useApiRequest = url => {
 
-    const [isLoading, setIsLoading] = useState(null)
-    const [itemData, setItemData] = useState([])
+    const [next, setNext] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
+    const [pokemons, setPokemons] = useState([])
 
-    useEffect(() => {
-        setIsLoading(true)
+    const loadPokemons = () => {
+        if(error) {
+            setError(null)
+            setIsLoading(true)
+        }
         fetch(url)
         .then(response => response.json())
-        .then(data => {
-            return {
-                'name': data.name.toUpperCase(),
-                'img' : data.sprites.front_default
+        .then(PokemonData => {
+            setNext(PokemonData.next)
+            if (PokemonData.previous === null) {
+                setPokemons(PokemonData.results)
+            } else {
+                setPokemons([...pokemons, ...PokemonData.results])
             }
         })
-        .then(data => {
-            setItemData(data)
+        .catch(error => {
+            console.log(error)
+            setError('Error on load.')
         })
         .finally(() => {
             setIsLoading(false)
         })
+    }
+
+    useEffect(() => {
+        setIsLoading(true)
+
+        loadPokemons()
     }, [url])
 
-    return { itemData, isLoading }
+    return {next, isLoading, error, pokemons, loadPokemons }
+
 }
+
 export default useApiRequest;

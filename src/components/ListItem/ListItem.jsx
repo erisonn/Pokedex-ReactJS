@@ -1,18 +1,15 @@
-import { useEffect } from "react"
-import useApiRequest from "../hooks/useApiRequest"
+import useDetailsRequest from "../hooks/useDetailsRequest"
+import { NavLink } from "react-router-dom"
 import './ListItem.css'
+import { useEffect } from "react"
 
 const ListItem = ({itemURL}) => {
 
-    const { itemData, isLoading } = useApiRequest(itemURL)
-
-    useEffect(() => {
-        console.log("Render", itemData.name)
-    })
+    const { itemData, itemLink, isLoading } = useDetailsRequest(itemURL)
 
     return (
+        <NavLink to={itemLink} className='list-link'>
         <div className="list-item">
-            {isLoading && <span>...</span>}
             <div className="item-image">
                 <img src={itemData.img} alt=""/>
             </div>
@@ -20,6 +17,7 @@ const ListItem = ({itemURL}) => {
                 <h1>{itemData.name}</h1>
             </div>
         </div>
+        </NavLink>
     );
 }
  
