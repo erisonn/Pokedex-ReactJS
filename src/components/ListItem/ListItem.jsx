@@ -1,7 +1,6 @@
 import useDetailsRequest from "../hooks/useDetailsRequest"
 import { NavLink } from "react-router-dom"
 import './ListItem.css'
-import { useEffect } from "react"
 
 const ListItem = ({itemURL}) => {
 

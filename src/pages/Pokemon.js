@@ -2,16 +2,21 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useDetailsRequest from "../components/hooks/useDetailsRequest";
 import Loading from "../components/Loading/Loading";
+import Error from '../components/Error/Error'
 
 const Pokemon = () => {
 
-    const { order } = useParams()
-    const url = `https://pokeapi.co/api/v2/pokemon/${order}`
-    const { itemData, isLoading } = useDetailsRequest(url)
+    const { id } = useParams()
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+    const { itemData, isLoading, error, loadDetails } = useDetailsRequest(url)
 
     useEffect(() => {
-        console.log(itemData.height)
+        console.log(itemData.types)
     })
+
+    if(error) {
+        return (<Error errorMessage={error} handleError={loadDetails}/>)
+    }
 
     return ( 
         <div className='item-details'>
@@ -25,7 +30,14 @@ const Pokemon = () => {
             <ul className='detail-list'>
                 <li>{itemData.height}</li>
                 <li>{itemData.weight}</li>
+                <li>{itemData.ability}</li>
             </ul>
+            <div>
+                <h2>Types</h2>
+                <div>
+                    {itemData.types && itemData.types.map(type => <span>{type.type.name}</span>)}
+                </div>
+            </div>
         </div>
     );
 }
