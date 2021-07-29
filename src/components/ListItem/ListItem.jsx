@@ -1,4 +1,4 @@
-import useDetailsRequest from "../hooks/useDetailsRequest"
+import useDetailsRequest from "../../hooks/useDetailsRequest"
 import { NavLink } from "react-router-dom"
 import './ListItem.css'
 

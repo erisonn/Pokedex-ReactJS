@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import capitalizeFirstLetter from '../utils/helpers'
 
 const useDetailsRequest = url => {
 
@@ -6,11 +7,7 @@ const useDetailsRequest = url => {
     const [itemData, setItemData] = useState([])
     const [itemLink, setItemLink] = useState('')
     const [error, setError] = useState(null)
-
-    const capitalizeFirstLetter = (string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      }
-      
+  
     const loadDetails = () => {
         if(error) {
             setError(null)

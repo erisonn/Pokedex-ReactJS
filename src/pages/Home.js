@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useApiRequest from '../components/hooks/useApiRequest'
+import useApiRequest from '../hooks/useApiRequest';
 import List from "../components/List/List";
 import Loading from "../components/Loading/Loading";
 import Error from "../components/Error/Error";

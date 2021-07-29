@@ -5,7 +5,7 @@ const List = ( {data} ) => {
 
     return ( 
         <div className="list">
-            {data.map(item => <ListItem itemURL ={item.url} key={item.url}/>)}
+            {data && data.map(item => <ListItem itemURL ={item.url} key={item.url}/>)}
         </div>
     );
 }

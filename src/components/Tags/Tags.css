@@ -1,0 +1,13 @@
+.tags .tag-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tags .tag-list .tag-item {
+  background-color: aquamarine;
+  padding: 5px 10px 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=Tags.css.map */

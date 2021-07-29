@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import useDetailsRequest from "../components/hooks/useDetailsRequest";
+import useDetailsRequest from "../hooks/useDetailsRequest";
 import Loading from "../components/Loading/Loading";
 import Error from '../components/Error/Error'
+import Tags from "../components/Tags/Tags";
 
 const Pokemon = () => {
 
@@ -32,14 +33,9 @@ const Pokemon = () => {
                 <li>{itemData.weight}</li>
                 <li>{itemData.ability}</li>
             </ul>
-            <div>
-                <h2>Types</h2>
-                <div>
-                    {itemData.types && itemData.types.map(type => <span>{type.type.name}</span>)}
-                </div>
-            </div>
+            <Tags title={'Types'} tags={itemData.types} />
         </div>
     );
 }
- 
+//{itemData.types && itemData.types.map(type => <Tags tagName={type.type.name}/>)}
 export default Pokemon;
