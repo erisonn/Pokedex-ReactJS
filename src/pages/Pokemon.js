@@ -22,7 +22,7 @@ const Pokemon = () => {
     return ( 
         <div className='item-details'>
             {isLoading && <Loading/>}
-            <div>
+            <div className='detail-image'>
                 <img src ={itemData.img}/>
             </div>
             <div className='detail-name'>

@@ -1,13 +1,95 @@
+.tags {
+  padding-bottom: 15px;
+}
+
 .tags .tag-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .tags .tag-list .tag-item {
-  background-color: aquamarine;
   padding: 5px 10px 5px 10px;
   margin: 5px;
   border-radius: 5px;
+  color: #1f1f1f;
+}
+
+.tags .tag-list .type-normal {
+  background-color: #A8A77A;
+}
+
+.tags .tag-list .type-fight {
+  background-color: #C22E28;
+}
+
+.tags .tag-list .type-flying {
+  background-color: #A98FF3;
+}
+
+.tags .tag-list .type-poison {
+  background-color: #A33EA1;
+}
+
+.tags .tag-list .type-ground {
+  background-color: #E2BF65;
+}
+
+.tags .tag-list .type-rock {
+  background-color: #B6A136;
+}
+
+.tags .tag-list .type-bug {
+  background-color: #A6B91A;
+}
+
+.tags .tag-list .type-ghost {
+  background-color: #735797;
+}
+
+.tags .tag-list .type-steel {
+  background-color: #B7B7CE;
+}
+
+.tags .tag-list .type-fire {
+  background-color: #EE8130;
+}
+
+.tags .tag-list .type-water {
+  background-color: #6390F0;
+}
+
+.tags .tag-list .type-grass {
+  background-color: #7AC74C;
+}
+
+.tags .tag-list .type-electric {
+  background-color: #F7D02C;
+}
+
+.tags .tag-list .type-psychic {
+  background-color: #F95587;
+}
+
+.tags .tag-list .type-ice {
+  background-color: #96D9D6;
+}
+
+.tags .tag-list .type-dragon {
+  background-color: #6F35FC;
+}
+
+.tags .tag-list .type-dark {
+  background-color: #705746;
+}
+
+.tags .tag-list .type-fairy {
+  background-color: #D685AD;
 }
 /*# sourceMappingURL=Tags.css.map */
