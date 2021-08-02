@@ -1,6 +1,7 @@
 header {
   height: 70px;
-  background-color: #303030;
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.123);
 }
 
 header .header-container {
@@ -20,10 +21,9 @@ header .header-container {
 
 header .header-container a {
   text-decoration: none;
-  color: whitesmoke;
+  color: #3f3f3f;
   font-weight: bold;
   font-size: 40px;
-  text-shadow: 2px 2px green;
   margin-left: 15px;
 }
 

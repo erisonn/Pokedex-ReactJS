@@ -8,7 +8,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  max-width: 1200px;
+  max-width: 800px;
   position: relative;
   left: 50%;
   -webkit-transform: translateX(-50%);

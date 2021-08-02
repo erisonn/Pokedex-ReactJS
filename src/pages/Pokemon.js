@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { NavLink, useParams } from "react-router-dom";
 import useDetailsRequest from "../hooks/useDetailsRequest";
 import Loading from "../components/Loading/Loading";
 import Error from '../components/Error/Error'
@@ -12,17 +12,15 @@ const Pokemon = () => {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`
     const { itemData, isLoading, error, loadDetails } = useDetailsRequest(url)
 
-    useEffect(() => {
-        console.log(itemData.types)
-    })
-
     if(error) {
         return (<Error errorMessage={error} handleError={loadDetails}/>)
     }
 
     return ( 
-        <div className='pokemon'>
-            {isLoading && <Loading/>}
+        <>
+        {isLoading && <Loading/>}
+        {isLoading || <div className='pokemon'>
+            <NavLink to={`/pokemon/${id === '1'? id : parseInt(id - 1)}`}>Previous</NavLink>
             <div className='pokemon-details'>
                 <div className='pokemon-image'>
                     <img src ={itemData.img} alt=''/>
@@ -30,11 +28,19 @@ const Pokemon = () => {
                 <div className='pokemon-name'>
                     <h1>{itemData.name}</h1>
                 </div>
-                <Tags title={''} tags={[{'type': {'name': itemData.height}}, {'type': {'name': itemData.weight}}, {'type': {'name': itemData.ability}}]}/>
+                <Tags 
+                    title={''} 
+                    tags={[
+                        {'type': {'name': itemData.height}, 'slot' : 1}, 
+                        {'type': {'name': itemData.weight}, 'slot' : 2}, 
+                        {'type': {'name': itemData.ability}, 'slot' : 3}
+                        ]}/>
                 <Tags title={'Types'} tags={itemData.types} />
             </div>
             <List listName={'Stats'} listItems={itemData.stats}/>
-        </div>
+            <NavLink to={`/pokemon/${id === '1118'? id : parseInt(id) + 1}`}>Next</NavLink>
+        </div>}
+        </>
     );
 }
 

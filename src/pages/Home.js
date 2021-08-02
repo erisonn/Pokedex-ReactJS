@@ -6,8 +6,7 @@ import Error from "../components/Error/Error";
 import Button from "../components/Button/Button";
 
 const Home = () => {
-
-    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=50')
+    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=153')
     const {next, isLoading, error, pokemons, loadPokemons } = useApiRequest(url)
    
     const loadMore = () => {
@@ -22,7 +21,7 @@ const Home = () => {
         <div className='Home'>
             {isLoading && <Loading/>}
             <CardList data={pokemons}/>
-            {isLoading || <Button buttonText={'Load more.'} handleClick={loadMore} />}
+            {next && <Button buttonText={'Load more.'} handleClick={loadMore} />}
         </div>
     );
 }

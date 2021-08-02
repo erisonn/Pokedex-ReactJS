@@ -1,6 +1,7 @@
 header {
     height: 70px;
-    background-color: rgb(48, 48, 48);
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.123);
     .header-container {
         margin: 0 auto;
         display: flex;
@@ -10,10 +11,9 @@ header {
         max-width: 1700px;
         a {
             text-decoration: none;
-            color: whitesmoke;
+            color: rgb(63, 63, 63);
             font-weight: bold;
             font-size: 40px;
-            text-shadow: 2px 2px green;
             margin-left: 15px;
         }
     }

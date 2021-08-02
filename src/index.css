@@ -17,6 +17,7 @@ body, html, #root {
 }
 
 .pokemon {
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,13 +32,30 @@ body, html, #root {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  -webkit-animation: translateX 500ms ease-in-out forwards;
+          animation: translateX 500ms ease-in-out forwards;
+}
+
+.pokemon a {
+  text-decoration: none;
+  background-color: pink;
+  color: #3f3f3f;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  font-weight: bold;
+}
+
+.pokemon a:hover {
+  background-color: plum;
 }
 
 .pokemon .pokemon-details {
   color: #3f3f3f;
-  border: 1px solid #afafaf;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 128, 0, 0.363)), color-stop(30%, white));
-  background-image: linear-gradient(rgba(0, 128, 0, 0.363) 0%, white 30%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(45%, whitesmoke), color-stop(90%, rgba(87, 244, 255, 0.692)), color-stop(102%, whitesmoke));
+  background-image: linear-gradient(whitesmoke 45%, rgba(87, 244, 255, 0.692) 90%, whitesmoke 102%);
+  border: 1px solid #3f3f3f31;
   border-radius: 5px;
   margin: 50px;
   text-align: center;
@@ -53,25 +71,38 @@ body, html, #root {
   height: inherit;
 }
 
-.pokemon .pokemon-details .detail-list {
-  list-style-type: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  padding: 0;
+@-webkit-keyframes translateX {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(500px);
+            transform: translateX(500px);
+  }
+  80% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
 }
 
-.pokemon .pokemon-details .detail-list li {
-  margin: 5px 10px 5px 10px;
-  padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-  background-color: yellowgreen;
+@keyframes translateX {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(500px);
+            transform: translateX(500px);
+  }
+  80% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
 }
 
 @media only screen and (max-width: 600px) {

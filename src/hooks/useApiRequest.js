@@ -20,7 +20,7 @@ const useApiRequest = url => {
                 setPokemons(PokemonData.results)
             } else {
                 setPokemons([...pokemons, ...PokemonData.results])
-            }
+            }     
         })
         .catch(error => {
             console.log(error)

@@ -17,18 +17,16 @@
       -ms-flex-align: center;
           align-items: center;
   margin: 10px 5px 10px 5px;
-  border: 1px solid #3f3f3f46;
-  background-color: white;
   border-radius: 5px;
   cursor: pointer;
-  width: 200px;
-  height: 250px;
+  width: 100px;
+  height: 150px;
 }
 
 .card-item .item-image {
   position: relative;
   top: 20%;
-  width: 100px;
+  width: 70px;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
@@ -43,8 +41,6 @@
 }
 
 .card-item .item-name {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.171)));
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.171));
   height: 30%;
   width: 100%;
 }
@@ -59,6 +55,5 @@
   width: fit-content;
   font-size: 15px;
   color: #3f3f3f;
-  border-bottom: 3px solid #3f3f3f;
 }
 /*# sourceMappingURL=Card.css.map */
