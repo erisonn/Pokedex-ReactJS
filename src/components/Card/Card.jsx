@@ -1,14 +1,14 @@
 import useDetailsRequest from "../../hooks/useDetailsRequest"
 import { NavLink } from "react-router-dom"
-import './ListItem.css'
+import './Card.css'
 
-const ListItem = ({itemURL}) => {
+const Card = ({itemURL}) => {
 
-    const { itemData, itemLink, isLoading } = useDetailsRequest(itemURL)
+    const { itemData, itemLink } = useDetailsRequest(itemURL)
 
     return (
-        <NavLink to={itemLink} className='list-link'>
-        <div className="list-item">
+        <NavLink to={itemLink} className='card-link'>
+        <div className="card-item">
             <div className="item-image">
                 <img src={itemData.img} alt=""/>
             </div>
@@ -20,4 +20,4 @@ const ListItem = ({itemURL}) => {
     );
 }
  
-export default ListItem;
+export default Card;

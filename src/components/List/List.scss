@@ -1,10 +1,20 @@
 .list {
-    margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    max-width: 1200px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    background-color: white;
+    color: #3f3f3f;
+    border: 1px solid #3f3f3f46;
+    border-radius: 5px;
+    margin: 50px;
+    height: fit-content;
+    width: 200px;
+    text-align: center;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 16px 0px 0px 0px;
+        li {
+            background-color: yellowgreen;
+            margin: 1px 0px 1px 0px;
+            line-height: 30px;
+        }
+    }
 }

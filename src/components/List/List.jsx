@@ -1,13 +1,15 @@
-import ListItem from "../ListItem/ListItem";
 import './List.css'
+import capitalizeFirstLetter from '../../utils/helpers'
 
-const List = ( {data} ) => {
-
+const List = ({ listName, listItems }) => {
     return ( 
-        <div className="list">
-            {data && data.map(item => <ListItem itemURL ={item.url} key={item.url}/>)}
+        <div className='list'>
+            <h2>{listName}</h2>
+            <ul>
+                {listItems && listItems.map(item => <li>{capitalizeFirstLetter(item.stat.name)}: {item.base_stat}</li>)}
+            </ul>
         </div>
-    );
+     );
 }
  
 export default List;

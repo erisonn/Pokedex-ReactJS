@@ -23,7 +23,8 @@ const useDetailsRequest = url => {
                 'types' : data.types,
                 'weight': 'Weight: ' + data.weight/10 + ' kg',
                 'height': 'Height: ' + data.height/10 + ' m',
-                'ability': 'Ability: ' + capitalizeFirstLetter(data.abilities[0].ability.name)
+                'ability': 'Ability: ' + capitalizeFirstLetter(data.abilities[0].ability.name),
+                'stats': data.stats
             }
         })
         .then(data => {

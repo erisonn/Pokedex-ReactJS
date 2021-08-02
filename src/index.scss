@@ -16,11 +16,15 @@ body, html, #root {
     }
   }
 
-
+.pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  transform: translateY(10%);
+}
  // item 
   .item-details {
     color: rgb(63, 63, 63);
-    border: 1px solid green;
+    border: 1px solid rgb(175, 175, 175);
     background-image: linear-gradient(rgba(0, 128, 0, 0.363) 0%, white 30%);
     border-radius: 5px;
     margin: 50px;

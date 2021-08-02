@@ -16,9 +16,19 @@ body, html, #root {
           transform: translateX(-50%);
 }
 
+.pokemon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-transform: translateY(10%);
+          transform: translateY(10%);
+}
+
 .item-details {
   color: #3f3f3f;
-  border: 1px solid green;
+  border: 1px solid #afafaf;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 128, 0, 0.363)), color-stop(30%, white));
   background-image: linear-gradient(rgba(0, 128, 0, 0.363) 0%, white 30%);
   border-radius: 5px;
