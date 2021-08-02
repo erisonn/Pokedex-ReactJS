@@ -6,7 +6,7 @@ const List = ({ listName, listItems }) => {
         <div className='list'>
             <h2>{listName}</h2>
             <ul>
-                {listItems && listItems.map(item => <li>{capitalizeFirstLetter(item.stat.name)}: {item.base_stat}</li>)}
+                {listItems && listItems.map(item => <li key={item.stat.name}>{capitalizeFirstLetter(item.stat.name)}: {item.base_stat}</li>)}
             </ul>
         </div>
      );

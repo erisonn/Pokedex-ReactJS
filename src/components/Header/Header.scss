@@ -1,5 +1,5 @@
 header {
-    height: 100px;
+    height: 70px;
     background-color: rgb(48, 48, 48);
     .header-container {
         margin: 0 auto;
@@ -7,13 +7,20 @@ header {
         align-items: center;
         justify-content: space-between;
         height: inherit;
-        max-width: 1750px;
+        max-width: 1700px;
         a {
             text-decoration: none;
             color: whitesmoke;
             font-weight: bold;
             font-size: 40px;
             text-shadow: 2px 2px green;
+            margin-left: 15px;
         }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .header-container a {
+        font-size: 30px !important;
     }
 }

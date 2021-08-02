@@ -1,5 +1,5 @@
 header {
-  height: 100px;
+  height: 70px;
   background-color: #303030;
 }
 
@@ -15,7 +15,7 @@ header .header-container {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: inherit;
-  max-width: 1750px;
+  max-width: 1700px;
 }
 
 header .header-container a {
@@ -24,5 +24,12 @@ header .header-container a {
   font-weight: bold;
   font-size: 40px;
   text-shadow: 2px 2px green;
+  margin-left: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .header-container a {
+    font-size: 30px !important;
+  }
 }
 /*# sourceMappingURL=Header.css.map */

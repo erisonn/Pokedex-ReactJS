@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useApiRequest from '../hooks/useApiRequest';
 import CardList from "../components/CardList/CardList";
 import Loading from "../components/Loading/Loading";
@@ -7,7 +7,7 @@ import Button from "../components/Button/Button";
 
 const Home = () => {
 
-    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=20')
+    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=50')
     const {next, isLoading, error, pokemons, loadPokemons } = useApiRequest(url)
    
     const loadMore = () => {

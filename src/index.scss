@@ -16,21 +16,24 @@ body, html, #root {
     }
   }
 
+
+// pagina de cada pokemon  
 .pokemon {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  transform: translateY(10%);
-}
- // item 
-  .item-details {
+  width: fit-content;
+  .pokemon-details {
     color: rgb(63, 63, 63);
     border: 1px solid rgb(175, 175, 175);
     background-image: linear-gradient(rgba(0, 128, 0, 0.363) 0%, white 30%);
     border-radius: 5px;
     margin: 50px;
     text-align: center;
-    max-width: 500px;
-    .detail-image {
+    min-width: 450px;
+    min-height: 470px;
+    .pokemon-image {
       height: 200px;
       img {
         height: inherit;
@@ -46,7 +49,16 @@ body, html, #root {
         margin: 5px 10px 5px 10px;
         padding: 5px 10px 5px 10px;
         border-radius: 5px;
-        background-color: rgb(75, 226, 231);
+        background-color: yellowgreen;
       }
     }
   }
+}
+
+@media only screen and (max-width: 600px) {
+  .pokemon-details {
+    min-width: 250px !important;
+    min-height: 270px !important;
+    margin: 20px !important;
+  }
+}
