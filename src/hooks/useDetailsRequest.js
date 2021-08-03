@@ -7,13 +7,16 @@ const useDetailsRequest = url => {
     const [itemData, setItemData] = useState([])
     const [itemLink, setItemLink] = useState('')
     const [error, setError] = useState(null)
+
+    const abortController = new AbortController()
+    let isCancelled = false
   
     const loadDetails = () => {
         if(error) {
             setError(null)
             setIsLoading(true)
         }
-        fetch(url)
+        fetch(url, { signal: AbortController.signal })
         .then(response => response.json())
         .then(data => {
             return {
@@ -28,19 +31,30 @@ const useDetailsRequest = url => {
             }
         })
         .then(data => {
-            setItemData(data)
-            setItemLink(`/pokemon/${data.id}`)
+            if(!isCancelled) {
+                setItemData(data)
+                setItemLink(`/pokemon/${data.id}`)
+            } 
         })
         .catch(error => {
-            console.log(error)
-            setError('Error on load.')
+            if(!isCancelled) {
+                console.log(error)
+                setError('Error on load.')
+            }
         })
         .finally(() => {
-            setIsLoading(false)
+            if(!isCancelled) {
+                setIsLoading(false)
+            }
         })
     }
     useEffect(() => {
         loadDetails()
+
+        return () => {
+            abortController.abort();
+            isCancelled = true
+        }
     }, [url])
 
     return { itemData, itemLink, isLoading, error, loadDetails }

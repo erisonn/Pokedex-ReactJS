@@ -1,12 +1,10 @@
 import './Loading.css'
+import loadingSVG from './loading.svg'
 
 const Loading = () => {
     return ( 
-        <div className='pokeball'>
-            <div className="pokeball-upperhalf"></div>
-            <div className="pokeball-center">
-                <div className="pokeball-deadcenter"></div>
-            </div>
+        <div className='loading'>
+            <img src={loadingSVG} alt="Loading..."/>
         </div>
     );
 }

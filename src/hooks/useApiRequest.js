@@ -7,27 +7,36 @@ const useApiRequest = url => {
     const [error, setError] = useState(null)
     const [pokemons, setPokemons] = useState([])
 
+    const abortController = new AbortController()
+    let isCancelled = false
+
     const loadPokemons = () => {
         if(error) {
             setError(null)
             setIsLoading(true)
         }
-        fetch(url)
+        fetch(url, { signal: AbortController.signal })
         .then(response => response.json())
         .then(PokemonData => {
-            setNext(PokemonData.next)
-            if (PokemonData.previous === null) {
-                setPokemons(PokemonData.results)
-            } else {
-                setPokemons([...pokemons, ...PokemonData.results])
-            }     
+            if(!isCancelled) {
+                setNext(PokemonData.next)
+                if (PokemonData.previous === null) {
+                    setPokemons(PokemonData.results)
+                } else {
+                    setPokemons([...pokemons, ...PokemonData.results])
+                } 
+            }    
         })
         .catch(error => {
-            console.log(error)
-            setError('Error on load.')
+            if(!isCancelled) {
+                console.log(error)
+                setError('Error on load.')
+            }
         })
         .finally(() => {
-            setIsLoading(false)
+            if(!isCancelled) {
+                setIsLoading(false)
+            }
         })
     }
 
@@ -35,6 +44,11 @@ const useApiRequest = url => {
         setIsLoading(true)
 
         loadPokemons()
+
+        return () => {
+            abortController.abort()
+            isCancelled = true
+        }
     }, [url])
 
     return {next, isLoading, error, pokemons, loadPokemons }
