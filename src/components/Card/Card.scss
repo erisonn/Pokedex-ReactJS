@@ -10,7 +10,7 @@
     border-radius: 5px;
     cursor: pointer;
     width: 100px;
-    height: 150px;
+    min-height: 150px;
     &:hover {
         background-color: azure;
         .item-image {

@@ -22,9 +22,14 @@ const Home = () => {
     return ( 
         <div className='Home'>
             {isLoading && <Loading/>}
-            {isLoading || <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} setUrl={setUrl}/>}
+            {isLoading || 
+            <Search 
+                setSearchTerm={setSearchTerm} 
+                setUrl={setUrl} 
+                url={'https://pokeapi.co/api/v2/pokemon?limit=1118'}
+                defaultLink={'/search?'}/>}
             <CardList data={pokemons} searchTerm={searchTerm}/>
-            {next && <Button buttonText={'Load more.'} handleClick={loadMore} />}
+            {next === null || isLoading === true? null : <Button buttonText={'Load more.'} handleClick={loadMore} />}
         </div>
     );
 }

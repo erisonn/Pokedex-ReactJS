@@ -44,9 +44,7 @@ const useApiRequest = url => {
 
     useEffect(() => {
         setIsLoading(true)
-
         loadPokemons()
-
         return () => {
             abortController.abort()
             isCancelled = true
