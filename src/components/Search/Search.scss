@@ -1,0 +1,33 @@
+.search {
+    border: 1px solid rgba(0, 0, 0, 0.233);
+    padding: 3px;
+    border-radius: 5px;
+    margin: 30px auto 0px;
+    width: fit-content;
+    input {
+        border: none;
+        margin-right: 5px;
+        max-width: 200px;
+        background-color: transparent;
+    }
+    button {
+        color: rgb(63, 63, 63);
+        background-color: plum;
+        padding: 5px 10px 5px 10px;
+        border: none;
+        border-radius: 5px;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(253, 141, 253);
+        }
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .search {
+        input {
+            max-width: 100px;
+        }
+    }
+}

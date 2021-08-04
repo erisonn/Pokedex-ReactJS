@@ -16,7 +16,6 @@ header .header-container {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: inherit;
-  max-width: 1700px;
 }
 
 header .header-container a {

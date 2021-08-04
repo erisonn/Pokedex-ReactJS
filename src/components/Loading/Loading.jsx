@@ -1,11 +1,8 @@
 import './Loading.css'
-import loadingSVG from './loading.svg'
 
 const Loading = () => {
     return ( 
-        <div className='loading'>
-            <img src={loadingSVG} alt="Loading..."/>
-        </div>
+        <div className='loader'></div>
     );
 }
  

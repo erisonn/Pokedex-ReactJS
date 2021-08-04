@@ -2,7 +2,9 @@ import './Button.css'
 
 const Button = ({ buttonText, handleClick }) => {
     return ( 
-        <button onClick={() => handleClick()} className='handle-click'>{buttonText}</button>
+        <div className="handle-click">
+            <button onClick={() => handleClick()}>{buttonText}</button>
+        </div>
     );
 }
  

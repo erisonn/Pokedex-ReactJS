@@ -8,16 +8,32 @@ body, html, #root {
   * {
     font-family: 'Roboto Slab', serif;
   }
-  .Home {
-    button {
+    .next {
       position: relative;
       left: 50%;
       transform: translateX(-50%);
     }
+  
+
+
+// pagina de cada pokemon
+
+.back {
+  position: absolute;
+  top: 80px;
+  margin-left: 10px;
+  text-decoration: none;
+  background-color: plum;
+  color: #3f3f3f;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+  font-weight: bold;
+  z-index: 1;
+  &:hover {
+    background-color: rgb(253, 141, 253);
   }
-
-
-// pagina de cada pokemon  
+}
 .pokemon {
   margin: 0 auto;
   display: flex;
@@ -26,18 +42,6 @@ body, html, #root {
   flex-wrap: wrap;
   width: fit-content;
   animation: translateX 500ms ease-in-out forwards;
-  a {
-    text-decoration: none;
-    background-color: pink;
-    color: #3f3f3f;
-    padding: 5px 10px 5px 10px;
-    border-radius: 5px;
-    transition: 0.2s ease-in-out;
-    font-weight: bold;
-    &:hover {
-      background-color: plum;
-    }
-  }
   .pokemon-details {
     color: rgb(63, 63, 63);
     background-image: linear-gradient(whitesmoke 45%, rgba(87, 244, 255, 0.692) 90%, whitesmoke 102%);
@@ -77,6 +81,6 @@ body, html, #root {
   .pokemon-details {
     min-width: 250px !important;
     min-height: 270px !important;
-    margin: 20px !important;
+    margin: 50px 20px 0px 20px !important;
   }
 }

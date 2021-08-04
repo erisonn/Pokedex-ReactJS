@@ -11,20 +11,25 @@
     cursor: pointer;
     width: 100px;
     height: 150px;
+    &:hover {
+        background-color: azure;
+        .item-image {
+            transform: scale(1.5);
+        }
+        h1 {
+            color: rgb(202, 83, 202);
+        }
+    }
     .item-image {
         position: relative;
         top: 20%;
         width: 70px;
         transition: 0.2s ease-in-out;
-        &:hover {
-            transform: scale(1.5);
-        }
         img {
             width: inherit;
         }
     }
     .item-name {
-        
         height: 30%;
         width: 100%;
     }
@@ -35,5 +40,6 @@
         width: fit-content;
         font-size: 15px;
         color: rgb(63, 63, 63);
+        transition: 0.2s ease-in-out;
     }
 }

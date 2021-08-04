@@ -5,7 +5,7 @@ const Header = () => {
     return ( 
         <header>
             <div className="header-container">
-               <NavLink to='/'>Pokédex</NavLink> 
+                <NavLink to='/'>Pokédex</NavLink>
             </div>
         </header>
     );

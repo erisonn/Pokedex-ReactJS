@@ -7,6 +7,8 @@ const useApiRequest = url => {
     const [error, setError] = useState(null)
     const [pokemons, setPokemons] = useState([])
 
+    const [searchTerm, setSearchTerm] = useState(null)
+
     const abortController = new AbortController()
     let isCancelled = false
 
@@ -49,9 +51,9 @@ const useApiRequest = url => {
             abortController.abort()
             isCancelled = true
         }
-    }, [url])
+    }, [url, searchTerm])
 
-    return {next, isLoading, error, pokemons, loadPokemons }
+    return {next, isLoading, error, pokemons, loadPokemons, searchTerm, setSearchTerm }
 
 }
 

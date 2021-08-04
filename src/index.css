@@ -9,11 +9,30 @@ body, html, #root {
   font-family: 'Roboto Slab', serif;
 }
 
-.Home button {
+.next {
   position: relative;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+.back {
+  position: absolute;
+  top: 80px;
+  margin-left: 10px;
+  text-decoration: none;
+  background-color: plum;
+  color: #3f3f3f;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.back:hover {
+  background-color: #fd8dfd;
 }
 
 .pokemon {
@@ -34,21 +53,6 @@ body, html, #root {
   width: fit-content;
   -webkit-animation: translateX 500ms ease-in-out forwards;
           animation: translateX 500ms ease-in-out forwards;
-}
-
-.pokemon a {
-  text-decoration: none;
-  background-color: pink;
-  color: #3f3f3f;
-  padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-  font-weight: bold;
-}
-
-.pokemon a:hover {
-  background-color: plum;
 }
 
 .pokemon .pokemon-details {
@@ -109,7 +113,7 @@ body, html, #root {
   .pokemon-details {
     min-width: 250px !important;
     min-height: 270px !important;
-    margin: 20px !important;
+    margin: 50px 20px 0px 20px !important;
   }
 }
 /*# sourceMappingURL=index.css.map */

@@ -19,8 +19,9 @@ const Pokemon = () => {
     return ( 
         <>
         {isLoading && <Loading/>}
-        {isLoading || <div className='pokemon'>
-            <NavLink to={`/pokemon/${id === '1'? id : parseInt(id - 1)}`}>Previous</NavLink>
+        <NavLink to ='/' className='back'>Back</NavLink>
+        {isLoading ||
+        <div className='pokemon'>
             <div className='pokemon-details'>
                 <div className='pokemon-image'>
                     <img src ={itemData.img} alt=''/>
@@ -38,7 +39,6 @@ const Pokemon = () => {
                 <Tags title={'Types'} tags={itemData.types} />
             </div>
             <List listName={'Stats'} listItems={itemData.stats}/>
-            <NavLink to={`/pokemon/${id === '1118'? id : parseInt(id) + 1}`}>Next</NavLink>
         </div>}
         </>
     );
