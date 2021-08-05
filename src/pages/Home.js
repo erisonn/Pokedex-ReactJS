@@ -8,13 +8,13 @@ import Search from "../components/Search/Search";
 
 const Home = () => {
 
-    const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=153`)
-    const {next, isLoading, error, pokemons, loadPokemons, searchTerm, setSearchTerm } = useApiRequest(url)
+    const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=15`)
+    const { next, isLoading, error, pokemons, loadPokemons } = useApiRequest(url)
 
     const loadMore = () => {
         setUrl(next)
     }
-
+   
     if(error) {
         return (<Error errorMessage={error} handleError={loadPokemons}/>)
     }
@@ -23,12 +23,8 @@ const Home = () => {
         <div className='Home'>
             {isLoading && <Loading/>}
             {isLoading || 
-            <Search 
-                setSearchTerm={setSearchTerm} 
-                setUrl={setUrl} 
-                url={'https://pokeapi.co/api/v2/pokemon?limit=1118'}
-                defaultLink={'/search?'}/>}
-            <CardList data={pokemons} searchTerm={searchTerm}/>
+            <Search/>}
+            <CardList data={pokemons}/>
             {next === null || isLoading === true? null : <Button buttonText={'Load more.'} handleClick={loadMore} />}
         </div>
     );

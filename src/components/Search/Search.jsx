@@ -1,25 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Search.css'
 
-const Search = ({ setSearchTerm, setUrl, url, defaultLink }) => {
+const Search = () => {
 
     const value = useRef(null)
-    const [link, setLink] = useState('')
+    const [link, setLink] = useState(null)
 
     const handleClick = () => {
         if(value.current) {
-            setSearchTerm(value.current)
-            setUrl(url)
+            setLink(value.current)
         }
     }
     
     return ( 
-        <div role="search" className='search'>
-            <input aria-label="search term" placeholder='Search...' onChange={(event) => 
-                {value.current = event.target.value ; setLink(event.target.value)}
-                }/>
-            <NavLink to={link && defaultLink + link}><button aria-label="search" onClick={() => handleClick()}>Search</button></NavLink>
+        <div>
+            <div role="search" className='search'>
+                <input aria-label="search term" placeholder='Search...' onChange={(event) => {value.current = event.target.value ; setLink(event.target.value)}}/>
+                <NavLink to={link === null? '/': `/search/${link}`}><button aria-label="search" onClick={() => handleClick()}>Search</button></NavLink>
+            </div>
         </div>
     );
 }
