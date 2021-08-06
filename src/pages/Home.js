@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useApiRequest from '../hooks/useApiRequest';
 import CardList from "../components/CardList/CardList";
 import Loading from "../components/Loading/Loading";
 import Error from "../components/Error/Error";
 import Button from "../components/Button/Button";
-import Search from "../components/Search/Search";
 
 const Home = () => {
 
-    const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=15`)
+    const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=105`)
     const { next, isLoading, error, pokemons, loadPokemons } = useApiRequest(url)
+
+    useEffect(() => {
+        document.title = 'Pokedéx'
+    })
 
     const loadMore = () => {
         setUrl(next)
@@ -22,10 +25,8 @@ const Home = () => {
     return ( 
         <div className='Home'>
             {isLoading && <Loading/>}
-            {isLoading || 
-            <Search/>}
             <CardList data={pokemons}/>
-            {next === null || isLoading === true? null : <Button buttonText={'Load more.'} handleClick={loadMore} />}
+            {!next || isLoading === true? null : <Button buttonText={'Load more'} handleClick={loadMore} />}
         </div>
     );
 }

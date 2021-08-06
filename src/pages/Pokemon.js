@@ -1,6 +1,5 @@
-import React from "react";
-import { NavLink, useParams } from "react-router-dom";
-import { useHistory } from "react-router";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import useDetailsRequest from "../hooks/useDetailsRequest";
 import Loading from "../components/Loading/Loading";
 import Error from '../components/Error/Error'
@@ -13,11 +12,9 @@ const Pokemon = () => {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`
     const { itemData, isLoading, error, loadDetails } = useDetailsRequest(url)
 
-    const history = useHistory()
-
-    const goBack = () => {
-        history.goBack()
-    }
+    useEffect(() => {
+        document.title = `Pokedéx | ${itemData.name}`
+    })
 
     if(error) {
         return (<Error errorMessage={error} handleError={loadDetails}/>)
@@ -26,7 +23,6 @@ const Pokemon = () => {
     return ( 
         <>
         {isLoading && <Loading/>}
-        <button className='back' onClick={()=> goBack()}>Back</button>
         {isLoading ||
         <div className='pokemon'>
             <div className='pokemon-details'>

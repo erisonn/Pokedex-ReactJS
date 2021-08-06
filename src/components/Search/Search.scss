@@ -1,16 +1,23 @@
 .search {
+    display: flex;
     border: 1px solid rgba(0, 0, 0, 0.233);
     padding: 3px;
     border-radius: 5px;
-    margin: 30px auto 0px;
-    width: fit-content;
+    margin-right: 15px;
     input {
         border: none;
         margin-right: 5px;
         max-width: 200px;
         background-color: transparent;
+        border: 1px solid transparent;
+        transition: 0.1s ease-in-out;
+        &:focus {
+            outline: none;
+            border: 1px solid plum;
+        }
     }
-    button {
+    a {
+        text-decoration: none;
         color: rgb(63, 63, 63);
         background-color: plum;
         padding: 5px 10px 5px 10px;

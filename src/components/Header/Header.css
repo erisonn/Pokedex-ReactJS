@@ -18,7 +18,7 @@ header .header-container {
   height: inherit;
 }
 
-header .header-container a {
+header .header-container .header-logo {
   text-decoration: none;
   color: #3f3f3f;
   font-weight: bold;
@@ -27,7 +27,7 @@ header .header-container a {
 }
 
 @media only screen and (max-width: 600px) {
-  .header-container a {
+  .header-container .header-logo {
     font-size: 30px !important;
   }
 }
