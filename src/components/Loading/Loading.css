@@ -1,12 +1,10 @@
 .loader {
   position: fixed;
   top: 150px;
-  left: 48%;
+  left: calc(50% - (30px / 2));
   margin: 0;
-  border: 5px solid rgba(63, 63, 63, 0.5);
-  /* Light grey */
+  border: 5px solid #5e5e5e;
   border-top: 5px solid yellowgreen;
-  /* Blue */
   border-radius: 50%;
   width: 30px;
   height: 30px;
