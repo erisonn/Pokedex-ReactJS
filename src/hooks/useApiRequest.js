@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import capitalizeFirstLetter from "../utils/helpers"
 
 const useApiRequest = url => {
 
@@ -8,24 +9,35 @@ const useApiRequest = url => {
     const [pokemons, setPokemons] = useState([])
 
     const abortController = new AbortController()
-    let isCancelled = false
 
-    const loadPokemons = () => {
+    const loadPokemons = (isCancelled) => {
         if(error) {
             setError(null)
             setIsLoading(true)
         }
         fetch(url, { signal: AbortController.signal })
         .then(response => response.json())
-        .then(PokemonData => {
+        .then(dataSet => {
             if(!isCancelled) {
-                setNext(PokemonData.next)
-                if (PokemonData.previous === null) {
-                    setPokemons(PokemonData.results)
-                } else {
-                    setPokemons([...pokemons, ...PokemonData.results])
-                } 
-            }    
+                setNext(dataSet.next)
+            }
+            Promise.all(dataSet.results.map(result => 
+                fetch(result.url)
+                .then(response => response.json())
+                .then(data => {
+                    return {
+                        'link': '/pokemon/' + data.id ,
+                        'name': capitalizeFirstLetter(data.name),
+                        'img' : data.sprites.other['official-artwork'].front_default,
+                        'id': data.id
+                    }
+                })
+            ))
+            .then(data => {
+                if(!isCancelled) {
+                    setPokemons([...pokemons, ...data])
+                }
+            })
         })
         .catch(error => {
             if(!isCancelled) {
@@ -35,14 +47,16 @@ const useApiRequest = url => {
         })
         .finally(() => {
             if(!isCancelled) {
-                setIsLoading(false)
+                setIsLoading(false)       
             }
         })
     }
 
     useEffect(() => {
+        let isCancelled = false
         setIsLoading(true)
-        loadPokemons()
+        loadPokemons(isCancelled)
+        console.log('Render')
         return () => {
             abortController.abort()
             isCancelled = true

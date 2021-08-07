@@ -25,8 +25,8 @@ const Home = () => {
     return ( 
         <div className='Home'>
             {isLoading && <Loading/>}
-            <CardList data={pokemons}/>
-            {!next || isLoading === true? null : <Button buttonText={'Load more'} handleClick={loadMore} />}
+            <CardList data={pokemons} />
+            {next && <Button buttonText={'Load more'} handleClick={loadMore} />}
         </div>
     );
 }
