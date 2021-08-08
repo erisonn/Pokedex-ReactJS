@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import { useParams } from "react-router-dom"
 import capitalizeFirstLetter from "../utils/helpers"
 
 const useApiRequest = url => {
@@ -8,7 +9,10 @@ const useApiRequest = url => {
     const [error, setError] = useState(null)
     const [pokemons, setPokemons] = useState([])
 
+    const { term } = useParams()
+
     const abortController = new AbortController()
+    const previous = useRef(null)
 
     const loadPokemons = (isCancelled) => {
         if(error) {
@@ -21,8 +25,15 @@ const useApiRequest = url => {
             if(!isCancelled) {
                 setNext(dataSet.next)
             }
-            Promise.all(dataSet.results.map(result => 
-                fetch(result.url)
+            Promise.all(dataSet.results.filter(pokemon => {
+                if(!term) {
+                    return pokemon
+                } else if (pokemon.name.includes(term)) {
+                    return pokemon
+                }
+                return false
+            }).map(pokemon => 
+                fetch(pokemon.url)
                 .then(response => response.json())
                 .then(data => {
                     return {
@@ -35,7 +46,12 @@ const useApiRequest = url => {
             ))
             .then(data => {
                 if(!isCancelled) {
-                    setPokemons([...pokemons, ...data])
+                    if(!previous.current) {
+                        setPokemons(data)
+                        previous.current = true
+                    } else {
+                        setPokemons([...pokemons, ...data])
+                    }
                 }
             })
         })
@@ -56,7 +72,6 @@ const useApiRequest = url => {
         let isCancelled = false
         setIsLoading(true)
         loadPokemons(isCancelled)
-        console.log('Render')
         return () => {
             abortController.abort()
             isCancelled = true

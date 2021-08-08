@@ -15,21 +15,14 @@ const SearchResults = () => {
 
     return ( 
         <div className='search-results'>
+            {isLoading && <Loading/>}
             <div className='search-title'>
                 <NavLink to='/'>x</NavLink>
                 <h2>Results for search query '{term}'</h2>
             </div>
             { !term ? <p>Oops! Nothing found.</p> : 
-            <div className="card-list">
-                {isLoading && <Loading/>}
-                {pokemons && pokemons.filter(pokemon => {
-                if (!term) {
-                    return pokemon
-                } else if (pokemon.name.toLowerCase().includes(term)) {
-                    return pokemon
-                }
-                    return false
-                }).map(item => <Card itemIMG ={item.img} itemName={item.name} itemLink={item.link} key={item.id}/>)}
+            <div className="card-list">                
+                {pokemons && pokemons.map(item => <Card itemIMG ={item.img} itemName={item.name} itemLink={item.link} key={item.id}/>)}
             </div>
             }
         </div>

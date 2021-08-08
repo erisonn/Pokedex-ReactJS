@@ -7,17 +7,17 @@ import Button from "../components/Button/Button";
 
 const Home = () => {
 
-    const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=105`)
+    const [url, setUrl] = useState(`https://pokeapi.co/api/v2/pokemon?limit=35`)
     const { next, isLoading, error, pokemons, loadPokemons } = useApiRequest(url)
 
     useEffect(() => {
         document.title = 'Pokedéx'
-    })
+    }, [])
 
     const loadMore = () => {
         setUrl(next)
     }
-   
+
     if(error) {
         return (<Error errorMessage={error} handleError={loadPokemons}/>)
     }
@@ -25,8 +25,8 @@ const Home = () => {
     return ( 
         <div className='Home'>
             {isLoading && <Loading/>}
-            <CardList data={pokemons} />
-            {next && <Button buttonText={'Load more'} handleClick={loadMore} />}
+            <CardList data={pokemons}/>
+            {next && <Button buttonText={!isLoading? 'Load more Pokémon' : 'Loading...'} handleClick={loadMore} />}
         </div>
     );
 }
