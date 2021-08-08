@@ -1,28 +1,31 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useCallback , useRef } from "react"
 import { useParams } from "react-router-dom"
 import capitalizeFirstLetter from "../utils/helpers"
 
+// CORRIGIR PAGINAÇÃO
+
 const useApiRequest = url => {
 
-    const [next, setNext] = useState(null)
+    const { term } = useParams()
+
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [pokemons, setPokemons] = useState([])
 
-    const { term } = useParams()
+    const [next, setNext] = useState(null)
 
-    const abortController = new AbortController()
-    const previous = useRef(null)
+    const abortController =  new AbortController()
+    const isMounted = useRef(null)
 
-    const loadPokemons = (isCancelled) => {
+    const loadPokemons = useCallback((isMounted, url) => {
+        setIsLoading(true)
         if(error) {
             setError(null)
-            setIsLoading(true)
         }
         fetch(url, { signal: AbortController.signal })
         .then(response => response.json())
         .then(dataSet => {
-            if(!isCancelled) {
+            if(isMounted) {
                 setNext(dataSet.next)
             }
             Promise.all(dataSet.results.filter(pokemon => {
@@ -45,10 +48,9 @@ const useApiRequest = url => {
                 })
             ))
             .then(data => {
-                if(!isCancelled) {
-                    if(!previous.current) {
+                if(isMounted) {
+                    if(pokemons.length === 0 || term) {
                         setPokemons(data)
-                        previous.current = true
                     } else {
                         setPokemons([...pokemons, ...data])
                     }
@@ -56,29 +58,29 @@ const useApiRequest = url => {
             })
         })
         .catch(error => {
-            if(!isCancelled) {
+            if(isMounted) {
                 console.log(error)
                 setError('Error on load.')
             }
         })
         .finally(() => {
-            if(!isCancelled) {
+            if(isMounted) {
                 setIsLoading(false)       
             }
         })
-    }
+    }, [error, pokemons, term])
 
     useEffect(() => {
-        let isCancelled = false
+        isMounted.current = true
         setIsLoading(true)
-        loadPokemons(isCancelled)
+        loadPokemons(isMounted, url)
         return () => {
             abortController.abort()
-            isCancelled = true
+            isMounted.current = false
         }
-    }, [url])
+    }, [term])
 
-    return { next, isLoading, error, pokemons, loadPokemons }
+    return { next, isLoading, error, pokemons, loadPokemons, isMounted }
 
 }
 

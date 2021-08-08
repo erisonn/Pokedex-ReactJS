@@ -9,6 +9,8 @@ const SearchResults = () => {
     const { isLoading, error, pokemons, loadPokemons } = useApiRequest('https://pokeapi.co/api/v2/pokemon?limit=1118')
     const { term } = useParams();
 
+    
+
     if(error) {
         return (<Error errorMessage={error} handleError={loadPokemons}/>)
     }
