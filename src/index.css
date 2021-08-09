@@ -27,23 +27,14 @@ body, html, #root {
           justify-content: space-evenly;
 }
 
-.search-results .search-title a {
-  text-decoration: none;
-  background-color: plum;
-  color: #3f3f3f;
-  padding: 10px;
-  line-height: 7px;
-  border-radius: 50%;
-  height: 10px;
-  width: 10px;
+.search-results .search-title img {
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
-  font-size: 18px;
+  height: 40px;
 }
 
-.search-results .search-title a:hover {
-  background-color: #bb0000;
-  color: whitesmoke;
+.search-results .search-title img:hover {
+  opacity: 0.8;
 }
 
 .search-results h2, .search-results p {
@@ -82,12 +73,35 @@ body, html, #root {
   min-height: 470px;
 }
 
-.pokemon .pokemon-details .pokemon-image {
-  height: 200px;
+.pokemon .pokemon-details .card-item {
+  width: 200px;
+  margin: 18px auto;
 }
 
-.pokemon .pokemon-details .pokemon-image img {
+.pokemon .pokemon-details .card-item .item-image {
+  height: 180px;
+  width: 180px;
+}
+
+.pokemon .pokemon-details .card-item .item-image img {
   height: inherit;
+}
+
+.pokemon .pokemon-details .card-item .item-name h1 {
+  font-size: 20px;
+}
+
+.pokemon .pokemon-details .card-item:hover {
+  background-color: transparent;
+}
+
+.pokemon .pokemon-details .card-item:hover .item-image {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.pokemon .pokemon-details .card-item:hover h1 {
+  color: #3f3f3f;
 }
 
 @-webkit-keyframes translateX {

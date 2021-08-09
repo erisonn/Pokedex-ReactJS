@@ -15,16 +15,18 @@ const Search = () => {
 
     return ( 
             <div role="search" className='search'>
-                <input aria-label="search term" placeholder='Search...' onChange={(event) => {value.current = event.target.value ; setLink(event.target.value)}}/>
+                <input 
+                    aria-label="search term" 
+                    placeholder='Search...' 
+                    onChange={(event) => {value.current = event.target.value ; setLink(event.target.value)}}
+                    />
                 <NavLink 
-                    exact to={
-                        !link || link === '' ? 
-                        `/` : `/search/${link}`} 
-                        aria-label="search" 
-                        onClick={() => handleClick()}
-                        >
-                            Search
-                        </NavLink>
+                    aria-label="search" 
+                    exact to={!link || link === '' ? `/` : `/search/${link}`} 
+                    onClick={() => handleClick()}
+                    >
+                        Search
+                    </NavLink>
             </div>
     );
 }

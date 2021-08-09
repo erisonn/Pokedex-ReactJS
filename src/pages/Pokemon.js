@@ -5,6 +5,7 @@ import Loading from "../components/Loading/Loading";
 import Error from '../components/Error/Error'
 import Tags from "../components/Tags/Tags";
 import List from "../components/List/List";
+import Card from "../components/Card/Card";
 
 const Pokemon = () => {
 
@@ -26,14 +27,8 @@ const Pokemon = () => {
         {isLoading ||
         <div className='pokemon'>
             <div className='pokemon-details'>
-                <div className='pokemon-image'>
-                    <img src ={itemData.img} alt=''/>
-                </div>
-                <div className='pokemon-name'>
-                    <h1>{itemData.name}</h1>
-                </div>
-                <Tags 
-                    title={''} 
+                <Card itemName={itemData.name} itemLink={`/pokemon/${itemData.id}`} itemIMG={itemData.img}/>
+                <Tags
                     tags={[
                         {'type': {'name': itemData.height}, 'slot' : 1}, 
                         {'type': {'name': itemData.weight}, 'slot' : 2}, 

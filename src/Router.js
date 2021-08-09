@@ -6,7 +6,7 @@ const Router = () => {
     return ( 
         <Switch>
             <Route path='/pokemon/:id?' component={Pokemon}/>
-            <Route path='/search/:term?'component={Main}/>
+            <Route path='/search/:searchQuery?'component={Main}/>
             <Route path='/' component={Main}/>
         </Switch>
     );

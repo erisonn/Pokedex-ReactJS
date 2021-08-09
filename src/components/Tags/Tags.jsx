@@ -5,7 +5,7 @@ const Tags = ({ title, tags }) => {
 
     return ( 
         <div className="tags">
-            {tags && <h2>{title}</h2>}
+            {tags && title && <h2>{title}</h2>}
             <div className="tag-list">
                 {tags && tags.map(tag => <TagItem tagName={tag.type.name} key={tag.slot}/>)}
             </div>

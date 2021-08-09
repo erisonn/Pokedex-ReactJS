@@ -6,7 +6,7 @@ import capitalizeFirstLetter from "../utils/helpers"
 
 const useApiRequest = url => {
 
-    const { term } = useParams()
+    const { searchQuery } = useParams()
 
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -29,9 +29,9 @@ const useApiRequest = url => {
                 setNext(dataSet.next)
             }
             Promise.all(dataSet.results.filter(pokemon => {
-                if(!term) {
+                if(!searchQuery) {
                     return pokemon
-                } else if (pokemon.name.includes(term)) {
+                } else if (pokemon.name.includes(searchQuery)) {
                     return pokemon
                 }
                 return false
@@ -49,7 +49,7 @@ const useApiRequest = url => {
             ))
             .then(data => {
                 if(isMounted) {
-                    if(pokemons.length === 0 || term) {
+                    if(!dataSet.previous) {
                         setPokemons(data)
                     } else {
                         setPokemons([...pokemons, ...data])
@@ -68,7 +68,7 @@ const useApiRequest = url => {
                 setIsLoading(false)       
             }
         })
-    }, [error, pokemons, term])
+    }, [error, pokemons, searchQuery])
 
     useEffect(() => {
         isMounted.current = true
@@ -78,7 +78,7 @@ const useApiRequest = url => {
             abortController.abort()
             isMounted.current = false
         }
-    }, [term])
+    }, [searchQuery, url])
 
     return { next, isLoading, error, pokemons, loadPokemons, isMounted }
 

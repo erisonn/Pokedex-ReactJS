@@ -8,8 +8,8 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 
 const Main = () => {
 
-    const { term } = useParams()
-    const url = term? 'https://pokeapi.co/api/v2/pokemon?limit=1118':'https://pokeapi.co/api/v2/pokemon?limit=56'
+    const { searchQuery } = useParams()
+    const url = searchQuery ? 'https://pokeapi.co/api/v2/pokemon?limit=1118':'https://pokeapi.co/api/v2/pokemon?limit=56'
     const { next, isLoading, error, pokemons, loadPokemons, isMounted } = useApiRequest(url)
     const [isBottom, setIsBottom] = useInfiniteScroll(next, () => loadPokemons(isMounted, next));
     
@@ -26,11 +26,11 @@ const Main = () => {
     return ( 
         <div className='Home'>
             {isLoading && <Loading />}
-            {term && 
+            {searchQuery && 
             <div className='search-results'>
                 <div className='search-title'>
-                    <NavLink to='/'>x</NavLink>
-                    <h2>Results for search query '{term}'</h2>
+                    <NavLink to='/'><img src="https://img.icons8.com/color/48/000000/cancel--v1.png" alt='Close'/></NavLink>
+                    <h2>Results for search query '{searchQuery}'</h2>
                 </div>
             </div>}
             <CardList data={pokemons}/>

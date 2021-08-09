@@ -10,7 +10,7 @@ const useInfiniteScroll = (next, callback) => {
 
   useEffect(() => {
     if (!isBottom) return;
-    if(next) {
+    else if(next) {
         callback()
     };
   }, [isBottom, callback, next])
