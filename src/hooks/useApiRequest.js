@@ -2,8 +2,6 @@ import { useState, useEffect, useCallback , useRef } from "react"
 import { useParams } from "react-router-dom"
 import capitalizeFirstLetter from "../utils/helpers"
 
-// CORRIGIR PAGINAÇÃO
-
 const useApiRequest = url => {
 
     const { searchQuery } = useParams()
