@@ -18,7 +18,7 @@ const Search = () => {
                 <input 
                     aria-label="search term" 
                     placeholder='Search...' 
-                    onChange={(event) => { value.current = event.target.value }}
+                    onChange={(event) => { value.current = event.target.value ; setLink(event.target.value) }}
                     />
                 <NavLink 
                     aria-label="search" 

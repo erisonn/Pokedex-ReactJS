@@ -4,4 +4,17 @@
     top: 40%;
     left: 50%;
     transform: translateX(-50%);
+    button {
+        color: rgb(63, 63, 63);
+        background-color: rgb(221, 160, 221);
+        border: none;
+        padding: 7px 10px 7px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-bottom: 30px;
+        &:hover {
+            background-color: rgb(253, 141, 253);
+        }
+    }
 }

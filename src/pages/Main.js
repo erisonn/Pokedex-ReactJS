@@ -24,8 +24,8 @@ const Main = () => {
     }
 
     return ( 
-        <div className='Home'>
-            {isLoading && <Loading />}
+        <div className='home'>
+            {isLoading && <Loading/>}
             {searchQuery && 
             <div className='search-results'>
                 <div className='search-title'>

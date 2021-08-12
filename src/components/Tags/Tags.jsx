@@ -7,7 +7,7 @@ const Tags = ({ title, tags }) => {
         <div className="tags">
             {tags && title && <h2>{title}</h2>}
             <div className="tag-list">
-                {tags && tags.map(tag => <TagItem tagName={tag.type.name} key={tag.slot}/>)}
+                {tags && tags.map(tag => <TagItem tagName={tag.name} key={tag.id}/>)}
             </div>
         </div>
     );
