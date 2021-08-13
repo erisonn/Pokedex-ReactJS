@@ -1,17 +1,13 @@
 .loader {
     position: fixed;
     top: 150px;
-    left: calc(50% - (30px / 2));
-    margin: 0 ;
-    border: 5px solid rgb(94, 94, 94);
-    border-top: 5px solid yellowgreen; 
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 2s linear infinite;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
     z-index: 1;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg) }
-    100% { transform: rotate(360deg) }
+    font-weight: bold;
+    color: rgb(63, 63, 63);
+    background-color: yellowgreen;
+    padding: 1px 5px;
+    border-radius: 2px;
 }

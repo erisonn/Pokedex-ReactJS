@@ -1,55 +1,84 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback , useRef } from "react"
+import { useParams } from "react-router-dom"
+import capitalizeFirstLetter from "../utils/helpers"
 
 const useApiRequest = url => {
 
-    const [next, setNext] = useState(null)
+    const { searchQuery } = useParams()
+
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const [pokemons, setPokemons] = useState([])
 
-    const abortController = new AbortController()
-    let isCancelled = false
+    const [next, setNext] = useState(null)
 
-    const loadPokemons = () => {
+    const abortController =  new AbortController()
+    const isMounted = useRef(null)
+
+    const loadPokemons = useCallback((isMounted, url) => {
+        setIsLoading(true)
         if(error) {
             setError(null)
-            setIsLoading(true)
         }
         fetch(url, { signal: AbortController.signal })
         .then(response => response.json())
-        .then(PokemonData => {
-            if(!isCancelled) {
-                setNext(PokemonData.next)
-                if (PokemonData.previous === null) {
-                    setPokemons(PokemonData.results)
-                } else {
-                    setPokemons([...pokemons, ...PokemonData.results])
-                } 
-            }    
+        .then(dataSet => {
+            if(isMounted) {
+                setNext(dataSet.next)
+            }
+            Promise.all(dataSet.results.filter(pokemon => {
+                if(!searchQuery) {
+                    return pokemon
+                } else if (pokemon.name.includes(searchQuery)) {
+                    return pokemon
+                }
+                return false
+            }).map(pokemon => 
+                fetch(pokemon.url)
+                .then(response => response.json())
+                .then(data => {
+                    return {
+                        'link': '/pokemon/' + data.id ,
+                        'name': capitalizeFirstLetter(data.name),
+                        'img' : data.sprites.other['official-artwork'].front_default,
+                        'id': data.id
+                    }
+                })
+            ))
+            .then(data => {
+                if(isMounted) {
+                    if(!dataSet.previous) {
+                        setPokemons(data)
+                    } else {
+                        setPokemons([...pokemons, ...data])
+                    }
+                }
+            })
         })
         .catch(error => {
-            if(!isCancelled) {
+            if(isMounted) {
                 console.log(error)
                 setError('Error on load.')
             }
         })
         .finally(() => {
-            if(!isCancelled) {
-                setIsLoading(false)
+            if(isMounted) {
+                setIsLoading(false)       
             }
         })
-    }
+    }, [error, pokemons, searchQuery])
 
     useEffect(() => {
+        isMounted.current = true
         setIsLoading(true)
-        loadPokemons()
+        loadPokemons(isMounted, url)
         return () => {
             abortController.abort()
-            isCancelled = true
+            isMounted.current = false
         }
-    }, [url])
+    }, [searchQuery, url])
 
-    return { next, isLoading, error, pokemons, loadPokemons }
+    return { next, isLoading, error, pokemons, loadPokemons, isMounted }
 
 }
 

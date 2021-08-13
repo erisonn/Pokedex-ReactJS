@@ -1,5 +1,5 @@
 .card-list {
-    margin-top: 15px;
+    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -7,4 +7,5 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin-bottom: 40px;
 }

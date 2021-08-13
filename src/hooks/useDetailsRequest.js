@@ -9,9 +9,8 @@ const useDetailsRequest = url => {
     const [error, setError] = useState(null)
 
     const abortController = new AbortController()
-    let isCancelled = false
   
-    const loadDetails = () => {
+    const loadDetails = (isCancelled) => {
         if(error) {
             setError(null)
             setIsLoading(true)
@@ -49,7 +48,8 @@ const useDetailsRequest = url => {
         })
     }
     useEffect(() => {
-        loadDetails()
+        let isCancelled = false
+        loadDetails(isCancelled)
 
         return () => {
             abortController.abort();
