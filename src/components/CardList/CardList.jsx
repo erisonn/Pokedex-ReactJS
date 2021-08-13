@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import './CardList.css'
+import './CardList.scss'
 
 const CardList = ( { data } ) => {
 

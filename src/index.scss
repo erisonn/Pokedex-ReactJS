@@ -1,22 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body, html, #root {
     margin: 0;
     min-height: 100vh;
     background-color: whitesmoke;
+    scroll-behavior: smooth;
   }
   * {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Press Start 2P', cursive;
   }
 
 .search-results {
   text-align: center;
   .search-title {
-    margin: 0 auto;
+    margin: 30px auto;
     display: flex;
     max-width: 500px;
     align-items: center;
     justify-content: space-evenly;
+    h2 {
+      font-size: 15px;
+    }
     img {
       transition: 0.2s ease-in-out;
       height: 40px;
@@ -52,6 +57,8 @@ body, html, #root {
     .card-item {
       width: 200px;
       margin: 18px auto;
+      background-color: transparent;
+      border: none;
       .item-image {
         height: 180px;
         width: 180px;
@@ -63,10 +70,6 @@ body, html, #root {
         font-size: 20px;
       }
       &:hover {
-        background-color: transparent;
-        .item-image {
-          transform: scale(1);
-        }
         h1 {
           color:rgb(63, 63, 63);
         }

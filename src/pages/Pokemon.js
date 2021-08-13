@@ -15,7 +15,7 @@ const Pokemon = () => {
     const { itemData, isLoading, error, loadDetails } = useDetailsRequest(url)
 
     useEffect(() => {
-        document.title = `Pokedéx | ${itemData.name}`
+        document.title = `Pokédex | ${itemData.name}`
     })
 
 

@@ -20,11 +20,11 @@ const useDetailsRequest = url => {
         .then(data => {
             return {
                 'name': capitalizeFirstLetter(data.name),
-                'img' : data.sprites.other['official-artwork'].front_default,
+                'img' : data.sprites.other['official-artwork'].front_default === null? data.sprites.front_default : data.sprites.other['official-artwork'].front_default,
                 'id': data.id,
                 'types' : data.types,
-                'weight': 'Weight: ' + data.weight/10 + ' kg',
-                'height': 'Height: ' + data.height/10 + ' m',
+                'weight': 'Weight: ' + data.weight/10 + 'kg',
+                'height': 'Height: ' + data.height/10 + 'm',
                 'ability': 'Ability: ' + capitalizeFirstLetter(data.abilities[0].ability.name),
                 'stats': data.stats
             }
@@ -55,7 +55,7 @@ const useDetailsRequest = url => {
             abortController.abort();
             isCancelled = true
         }
-    }, [url])
+    }, [url]) // eslint-disable-line
 
     return { itemData, itemLink, isLoading, error, loadDetails }
 }

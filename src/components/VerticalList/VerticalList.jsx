@@ -1,4 +1,4 @@
-import './VerticalList.css'
+import './VerticalList.scss'
 
 const VerticalList = ({ listName, listItems }) => {
     return ( 

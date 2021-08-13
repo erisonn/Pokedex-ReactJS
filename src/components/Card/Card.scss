@@ -6,16 +6,14 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 5px 10px 5px;
+    margin: 10px 1px 10px 1px;
+    background-color: azure;
+    border: 1px solid rgba(63, 63, 63, 0.212);
     border-radius: 5px;
     cursor: pointer;
-    width: 100px;
+    width: 120px;
     min-height: 150px;
     &:hover {
-        background-color: azure;
-        .item-image {
-            transform: scale(1.5);
-        }
         h1 {
             color: rgb(202, 83, 202);
         }
@@ -23,7 +21,7 @@
     .item-image {
         position: relative;
         top: 20%;
-        width: 70px;
+        width: 100px;
         transition: 0.2s ease-in-out;
         img {
             width: inherit;
@@ -34,11 +32,12 @@
         width: 100%;
     }
     h1 {
+        text-align: center;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         width: fit-content;
-        font-size: 15px;
+        font-size: 10px;
         color: rgb(63, 63, 63);
         transition: 0.2s ease-in-out;
     }

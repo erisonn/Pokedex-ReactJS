@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback , useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import capitalizeFirstLetter from "../utils/helpers"
 
@@ -15,7 +15,7 @@ const useApiRequest = url => {
     const abortController =  new AbortController()
     const isMounted = useRef(null)
 
-    const loadPokemons = useCallback((isMounted, url) => {
+    const loadPokemons = (isMounted, url) => {
         setIsLoading(true)
         if(error) {
             setError(null)
@@ -29,7 +29,7 @@ const useApiRequest = url => {
             Promise.all(dataSet.results.filter(pokemon => {
                 if(!searchQuery) {
                     return pokemon
-                } else if (pokemon.name.includes(searchQuery)) {
+                } else if (pokemon.name.includes(searchQuery.toLowerCase())) {
                     return pokemon
                 }
                 return false
@@ -40,7 +40,7 @@ const useApiRequest = url => {
                     return {
                         'link': '/pokemon/' + data.id ,
                         'name': capitalizeFirstLetter(data.name),
-                        'img' : data.sprites.other['official-artwork'].front_default,
+                        'img' : data.sprites.front_default,
                         'id': data.id
                     }
                 })
@@ -66,7 +66,7 @@ const useApiRequest = url => {
                 setIsLoading(false)       
             }
         })
-    }, [error, pokemons, searchQuery])
+    }
 
     useEffect(() => {
         isMounted.current = true
@@ -76,7 +76,7 @@ const useApiRequest = url => {
             abortController.abort()
             isMounted.current = false
         }
-    }, [searchQuery, url])
+    }, [searchQuery, url]) // eslint-disable-line
 
     return { next, isLoading, error, pokemons, loadPokemons, isMounted }
 

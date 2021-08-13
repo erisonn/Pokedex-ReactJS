@@ -1,4 +1,4 @@
-import './Tags.css'
+import './Tags.scss'
 import TagItem from "../TagItem/TagItem";
 
 const Tags = ({ title, tags }) => {

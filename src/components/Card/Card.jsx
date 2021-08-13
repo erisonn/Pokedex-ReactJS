@@ -1,6 +1,6 @@
 import LazyLoad from "react-lazyload"
 import { NavLink } from "react-router-dom"
-import './Card.css'
+import './Card.scss'
 
 const Card = ({ itemIMG, itemName, itemLink }) => {
 

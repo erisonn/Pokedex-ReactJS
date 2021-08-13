@@ -1,32 +1,28 @@
-import { useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import './Search.css'
+import { useState } from 'react';
+import { useHistory } from 'react-router';
+import './Search.scss'
 
 const Search = () => {
 
-    const value = useRef(null)
-    const [link, setLink] = useState(null)
+    const [searchQuery, setSearchQuery] = useState('')
+    const history = useHistory()
 
-    const handleClick = () => {
-        if(value.current) {
-            setLink(value.current)
-        }
+    function handleTermoChange(e) {
+        const value = e.target.value
+        setSearchQuery(value)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        history.push(`/search/${searchQuery}`)
     }
 
     return ( 
             <div role="search" className='search'>
-                <input 
-                    aria-label="search term" 
-                    placeholder='Search...' 
-                    onChange={(event) => { value.current = event.target.value ; setLink(event.target.value) }}
-                    />
-                <NavLink 
-                    aria-label="search" 
-                    exact to={!link || link === '' ? `/` : `/search/${link}`} 
-                    onClick={() => handleClick()}
-                    >
-                        Search
-                    </NavLink>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder='Search...' className='search-input' name={searchQuery} onChange={handleTermoChange} />
+                    <input type="submit" value="Search" className='search-submit'/>
+                </form>
             </div>
     );
 }

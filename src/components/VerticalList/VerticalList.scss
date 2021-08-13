@@ -8,11 +8,15 @@
     height: fit-content;
     width: 200px;
     text-align: center;
+    h2 {
+        font-size: 20px;
+    }
     ul {
         list-style: none;
         padding: 0;
         margin: 16px 0px 0px 0px;
         li {
+            font-size: 10px;
             background-color: yellowgreen;
             margin: 1px 0px 1px 0px;
             line-height: 30px;
