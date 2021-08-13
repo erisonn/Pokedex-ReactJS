@@ -11,6 +11,26 @@ body, html, #root {
     font-family: 'Press Start 2P', cursive;
   }
 
+.home {
+  text-align: center;
+  .load-more {
+    background-color: plum;
+    border: none;
+    color: rgb(63, 63, 63);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 7px 5px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background-color: rgb(253, 141, 253);
+    }
+  }
+}
+.hidden {
+  visibility:hidden;
+}
+
 .search-results {
   text-align: center;
   .search-title {

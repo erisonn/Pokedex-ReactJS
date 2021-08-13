@@ -47,8 +47,9 @@ const useApiRequest = url => {
             ))
             .then(data => {
                 if(isMounted) {
+                    setIsLoading(false)
                     if(!dataSet.previous) {
-                        setPokemons(data)
+                        setPokemons(data)   
                     } else {
                         setPokemons([...pokemons, ...data])
                     }
@@ -59,11 +60,6 @@ const useApiRequest = url => {
             if(isMounted) {
                 console.log(error)
                 setError('Error on load.')
-            }
-        })
-        .finally(() => {
-            if(isMounted) {
-                setIsLoading(false)       
             }
         })
     }

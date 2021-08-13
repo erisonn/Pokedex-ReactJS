@@ -4,15 +4,13 @@ import CardList from "../components/CardList/CardList";
 import Loading from "../components/Loading/Loading";
 import Error from "../components/Error/Error";
 import { useParams, NavLink } from "react-router-dom";
-import useInfiniteScroll from "../hooks/useInfiniteScroll";
 
 const Main = () => {
 
     const { searchQuery } = useParams()
     const url = searchQuery ? 'https://pokeapi.co/api/v2/pokemon?limit=1118':'https://pokeapi.co/api/v2/pokemon?limit=108'
     const { next, isLoading, error, pokemons, loadPokemons, isMounted } = useApiRequest(url)
-    const [isBottom, setIsBottom] = useInfiniteScroll(next, () => loadPokemons(isMounted, next));
-    
+
     useEffect(() => {
         if(searchQuery) {
             document.title = `${searchQuery} - Pokédex search`
@@ -20,13 +18,12 @@ const Main = () => {
             document.title = 'Pokédex'
         }
 
-        setIsBottom(false)
-    }, [isBottom, setIsBottom, searchQuery])
+    }, [searchQuery])
 
     if(error) {
         return (<Error errorMessage={error} handleError={() => loadPokemons(isMounted, url)}/>)
     }
-
+    
     return ( 
         <div className='home'>
             {isLoading && <Loading/>}
@@ -38,6 +35,7 @@ const Main = () => {
                 </div>
             </div>}
             <CardList data={pokemons}/>
+            {next && <button className={`load-more ${isLoading && 'hidden'}`} onClick={() => loadPokemons(isMounted, next)}>Load more Pokémon</button>}
         </div>
     );
 }
