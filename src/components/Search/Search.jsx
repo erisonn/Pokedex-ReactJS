@@ -7,7 +7,7 @@ const Search = () => {
     const [searchQuery, setSearchQuery] = useState('')
     const history = useHistory()
 
-    function handleTermoChange(e) {
+    function handleQueryChange(e) {
         const value = e.target.value
         setSearchQuery(value)
     }
@@ -20,7 +20,7 @@ const Search = () => {
     return ( 
             <div role="search" className='search'>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder='Search...' className='search-input' name={searchQuery} onChange={handleTermoChange} />
+                    <input type="text" placeholder='Search...' className='search-input' name={searchQuery} onChange={handleQueryChange} />
                     <input type="submit" value="Search" className='search-submit'/>
                 </form>
             </div>
