@@ -23,4 +23,4 @@ Compila o app para deploy no diretório `build`.
 
 App disponível no Vercel: 
 
-## https://pokedex-erisonn.vercel.app/
+## https://pokedex-erison.vercel.app/
