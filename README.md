@@ -2,6 +2,18 @@
 
 Imagens e informações sobre todos os Pokémons. Utiliza dados da PokéAPI.
 
+## Página principal 
+
+![Imgur](https://i.imgur.com/pmQwCLR.png)
+
+## Detalhes do Pokémon
+
+![Imgur](https://i.imgur.com/5fHjwcS.png)
+
+## Busca 
+
+![Imgur](https://i.imgur.com/0d7h1LK.png)
+
 ## Scripts disponíveis
 
 No diretório do projeto, você pode utilizar os seguintes comandos:
