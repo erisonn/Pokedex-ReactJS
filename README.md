@@ -4,13 +4,19 @@ Imagens e informações sobre todos os Pokémons. Utiliza dados da PokéAPI.
 
 ## Página principal 
 
+### `/`
+
 ![Imgur](https://i.imgur.com/pmQwCLR.png)
 
 ## Detalhes do Pokémon
 
+### `/pokemon/${pokemonID}`
+
 ![Imgur](https://i.imgur.com/5fHjwcS.png)
 
 ## Busca 
+
+### `/search/${searchQuery}`
 
 ![Imgur](https://i.imgur.com/0d7h1LK.png)
 
